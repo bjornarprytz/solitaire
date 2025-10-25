@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0adfppnjcaek"]
+
+[ext_resource type="Script" uid="uid://bo5rll13vtxmv" path="res://stack_pile.gd" id="1_u52gb"]
+
+[node name="StackPile" type="VBoxContainer"]
+theme_override_constants/separation = -96
+script = ExtResource("1_u52gb")

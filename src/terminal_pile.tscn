@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cblwct10ittyy"]
+
+[ext_resource type="PackedScene" uid="uid://bc5e58fyby0i2" path="res://card.tscn" id="1_gtjg0"]
+[ext_resource type="Script" uid="uid://b6stt2t0vqr" path="res://terminal_pile.gd" id="1_k6s5h"]
+[ext_resource type="Script" uid="uid://brbusmvass5ub" path="res://data/card_data.gd" id="2_k6s5h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6s5h"]
+
+[sub_resource type="Resource" id="Resource_7mycd"]
+script = ExtResource("2_k6s5h")
+value = 13
+suit = 2
+metadata/_custom_type_script = "uid://brbusmvass5ub"
+
+[node name="HeartsTerminal" type="MarginContainer"]
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+script = ExtResource("1_k6s5h")
+
+[node name="Cards" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k6s5h")
+
+[node name="Card" parent="Cards" instance=ExtResource("1_gtjg0")]
+modulate = Color(1, 0.27058825, 0, 1)
+layout_mode = 2
+card_data = SubResource("Resource_7mycd")

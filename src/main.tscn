@@ -1,44 +1,126 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgrejd4v5ywd3"]
+[gd_scene load_steps=8 format=3 uid="uid://cgrejd4v5ywd3"]
 
 [ext_resource type="Script" uid="uid://ceckrfjftshqs" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://y2ema5vflrsn" path="res://draw_pile.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bc5e58fyby0i2" path="res://card.tscn" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://brbusmvass5ub" path="res://data/card_data.gd" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cblwct10ittyy" path="res://terminal_pile.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://d0adfppnjcaek" path="res://stack_pile.tscn" id="6_7mycd"]
+
+[sub_resource type="Resource" id="Resource_7mycd"]
+script = ExtResource("4_lquwl")
+value = 13
+suit = 2
+metadata/_custom_type_script = "uid://brbusmvass5ub"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-texture_filter = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -145.0
-offset_top = -88.0
-offset_right = 145.0
-offset_bottom = 84.0
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -473.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"Title"
-bbcode_enabled = true
-text = "[u]Hello World"
-fit_content = true
+[node name="DrawAndOpen" type="PanelContainer" parent="CanvasLayer/MarginContainer/Control"]
+texture_filter = 3
+layout_mode = 1
+offset_right = 102.0
+offset_bottom = 134.0
 
-[node name="Title2" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HB" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control/DrawAndOpen"]
 layout_mode = 2
-size_flags_vertical = 3
-text = "This is the main text"
+
+[node name="DrawPile" type="MarginContainer" parent="CanvasLayer/MarginContainer/Control/DrawAndOpen/HB"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="TextureRect" parent="CanvasLayer/MarginContainer/Control/DrawAndOpen/HB/DrawPile" instance=ExtResource("2_1bvp3")]
+layout_mode = 2
+
+[node name="OpenPile" type="MarginContainer" parent="CanvasLayer/MarginContainer/Control/DrawAndOpen/HB"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="Card" parent="CanvasLayer/MarginContainer/Control/DrawAndOpen/HB/OpenPile" instance=ExtResource("3_1bvp3")]
+layout_mode = 2
+card_data = SubResource("Resource_7mycd")
+
+[node name="Terminals" type="PanelContainer" parent="CanvasLayer/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -420.0
+offset_bottom = 134.0
+grow_horizontal = 0
+
+[node name="HB" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control/Terminals"]
+layout_mode = 2
+
+[node name="HeartsTerminal" parent="CanvasLayer/MarginContainer/Control/Terminals/HB" instance=ExtResource("5_lquwl")]
+layout_mode = 2
+
+[node name="ClubsTerminal" parent="CanvasLayer/MarginContainer/Control/Terminals/HB" instance=ExtResource("5_lquwl")]
+layout_mode = 2
+suit = 1
+
+[node name="DiamondsTerminal" parent="CanvasLayer/MarginContainer/Control/Terminals/HB" instance=ExtResource("5_lquwl")]
+layout_mode = 2
+suit = 2
+
+[node name="SpadesTerminal" parent="CanvasLayer/MarginContainer/Control/Terminals/HB" instance=ExtResource("5_lquwl")]
+layout_mode = 2
+suit = 3
+
+[node name="Stacks" type="PanelContainer" parent="CanvasLayer/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -516.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HB" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control/Stacks"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="StackPile" parent="CanvasLayer/MarginContainer/Control/Stacks/HB" instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="StackPile2" parent="CanvasLayer/MarginContainer/Control/Stacks/HB" instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="StackPile3" parent="CanvasLayer/MarginContainer/Control/Stacks/HB" instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="StackPile4" parent="CanvasLayer/MarginContainer/Control/Stacks/HB" instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="StackPile5" parent="CanvasLayer/MarginContainer/Control/Stacks/HB" instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="StackPile6" parent="CanvasLayer/MarginContainer/Control/Stacks/HB" instance=ExtResource("6_7mycd")]
+layout_mode = 2
+
+[node name="StackPile7" parent="CanvasLayer/MarginContainer/Control/Stacks/HB" instance=ExtResource("6_7mycd")]
+layout_mode = 2

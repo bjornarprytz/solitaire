@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc5e58fyby0i2"]
+
+[ext_resource type="Texture2D" uid="uid://c4bmop533isw8" path="res://assets/img/card-front-medium.png" id="1_kikvd"]
+[ext_resource type="Script" uid="uid://cp04x0716l2vf" path="res://card.gd" id="2_rjlel"]
+[ext_resource type="Texture2D" uid="uid://x26utaa7p8la" path="res://assets/img/card-back-sprite-medium.png" id="3_q5obu"]
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(96, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(48, 64)
+script = ExtResource("2_rjlel")
+
+[node name="Front" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+texture = ExtResource("1_kikvd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Front"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 7
+
+[node name="Control" type="Control" parent="Front/MarginContainer"]
+layout_mode = 2
+
+[node name="Value1" type="RichTextLabel" parent="Front/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 5.0
+offset_bottom = 23.0
+text = "7"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Value2" type="RichTextLabel" parent="Front/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "7"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Back" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+texture = ExtResource("3_q5obu")
+
+[node name="InputCatcher" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="InputCatcher" to="." method="_on_input_catcher_gui_input"]
