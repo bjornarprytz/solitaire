@@ -17,6 +17,13 @@ func _ready() -> void:
 	value_2.text = card_data.value_as_string()
 	modulate = card_data.suit_as_color()
 	
+	if is_face_down:
+		front.hide()
+		back.show()
+	else:
+		front.show()
+		back.hide()
+	
 
 func _to_string() -> String:
 	return "%s %s" % [card_data.value_as_string(), card_data.suit]

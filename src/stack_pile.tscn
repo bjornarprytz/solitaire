@@ -3,5 +3,18 @@
 [ext_resource type="Script" uid="uid://bo5rll13vtxmv" path="res://stack_pile.gd" id="1_u52gb"]
 
 [node name="StackPile" type="VBoxContainer"]
-theme_override_constants/separation = -96
+custom_minimum_size = Vector2(96, 0)
+offset_right = 96.0
+offset_bottom = 1052.0
+theme_override_constants/separation = -88
 script = ExtResource("1_u52gb")
+
+[node name="FaceDown" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -88
+
+[node name="FaceUp" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -88
