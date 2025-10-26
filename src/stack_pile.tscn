@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bo5rll13vtxmv" path="res://stack_pile.gd" id="1_u52gb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6b0wd"]
-size = Vector2(140, 719)
+size = Vector2(109, 719)
 
 [node name="StackPile" type="VBoxContainer"]
 custom_minimum_size = Vector2(96, 0)
@@ -28,7 +28,7 @@ theme_override_constants/separation = -88
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(69, 359.5)
+position = Vector2(53.5, 359.5)
 shape = SubResource("RectangleShape2D_6b0wd")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
