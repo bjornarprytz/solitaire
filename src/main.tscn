@@ -9,9 +9,18 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,11 +31,11 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Control" type="Control" parent="CanvasLayer/MarginContainer"]
+[node name="Control" type="Control" parent="Control/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,86 +43,90 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control/VBoxContainer"]
+[node name="Top" type="HBoxContainer" parent="Control/MarginContainer/Control/VBoxContainer"]
 layout_mode = 2
 
-[node name="DrawAndOpen" type="PanelContainer" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer"]
+[node name="DrawAndOpen" type="PanelContainer" parent="Control/MarginContainer/Control/VBoxContainer/Top"]
 texture_filter = 3
 layout_mode = 2
 
-[node name="HB" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer/DrawAndOpen"]
+[node name="HB" type="HBoxContainer" parent="Control/MarginContainer/Control/VBoxContainer/Top/DrawAndOpen"]
 layout_mode = 2
 
-[node name="DrawPile" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer/DrawAndOpen/HB" instance=ExtResource("2_1bvp3")]
+[node name="DrawPile" parent="Control/MarginContainer/Control/VBoxContainer/Top/DrawAndOpen/HB" instance=ExtResource("2_1bvp3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="OpenPile" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer/DrawAndOpen/HB" instance=ExtResource("3_lquwl")]
+[node name="OpenPile" parent="Control/MarginContainer/Control/VBoxContainer/Top/DrawAndOpen/HB" instance=ExtResource("3_lquwl")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Control" type="Control" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="Control/MarginContainer/Control/VBoxContainer/Top"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Terminals" type="PanelContainer" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer"]
+[node name="Terminals" type="PanelContainer" parent="Control/MarginContainer/Control/VBoxContainer/Top"]
 layout_mode = 2
 
-[node name="HB" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer/Terminals"]
+[node name="HB" type="HBoxContainer" parent="Control/MarginContainer/Control/VBoxContainer/Top/Terminals"]
 layout_mode = 2
 
-[node name="HeartsTerminal" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer/Terminals/HB" instance=ExtResource("5_lquwl")]
+[node name="HeartsTerminal" parent="Control/MarginContainer/Control/VBoxContainer/Top/Terminals/HB" instance=ExtResource("5_lquwl")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ClubsTerminal" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer/Terminals/HB" instance=ExtResource("5_lquwl")]
+[node name="ClubsTerminal" parent="Control/MarginContainer/Control/VBoxContainer/Top/Terminals/HB" instance=ExtResource("5_lquwl")]
+unique_name_in_owner = true
 layout_mode = 2
 suit = 1
 
-[node name="DiamondsTerminal" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer/Terminals/HB" instance=ExtResource("5_lquwl")]
+[node name="DiamondsTerminal" parent="Control/MarginContainer/Control/VBoxContainer/Top/Terminals/HB" instance=ExtResource("5_lquwl")]
+unique_name_in_owner = true
 layout_mode = 2
 suit = 2
 
-[node name="SpadesTerminal" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/HBoxContainer/Terminals/HB" instance=ExtResource("5_lquwl")]
+[node name="SpadesTerminal" parent="Control/MarginContainer/Control/VBoxContainer/Top/Terminals/HB" instance=ExtResource("5_lquwl")]
+unique_name_in_owner = true
 layout_mode = 2
 suit = 3
 
-[node name="Control" type="Control" parent="CanvasLayer/MarginContainer/Control/VBoxContainer"]
+[node name="Spacer" type="Control" parent="Control/MarginContainer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Stacks" type="PanelContainer" parent="CanvasLayer/MarginContainer/Control/VBoxContainer"]
+[node name="Stacks" type="PanelContainer" parent="Control/MarginContainer/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HB" type="HBoxContainer" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/Stacks"]
+[node name="HB" type="HBoxContainer" parent="Control/MarginContainer/Control/VBoxContainer/Stacks"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="StackPile1" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
+[node name="StackPile1" parent="Control/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StackPile2" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
+[node name="StackPile2" parent="Control/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StackPile3" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
+[node name="StackPile3" parent="Control/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StackPile4" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
+[node name="StackPile4" parent="Control/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StackPile5" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
+[node name="StackPile5" parent="Control/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StackPile6" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
+[node name="StackPile6" parent="Control/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StackPile7" parent="CanvasLayer/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
+[node name="StackPile7" parent="Control/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 layout_mode = 2

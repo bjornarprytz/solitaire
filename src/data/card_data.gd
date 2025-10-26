@@ -8,6 +8,10 @@ enum Suit{
 	Diamonds,
 	Spades
 }
+const CLUBS_TEXTURE = preload("uid://bybk6t6lgpl52")
+const DIAMONDS_TEXTURE = preload("uid://cuy0ynuvhy4uu")
+const HEARTS_TEXTURE = preload("uid://cwbgtq6075gv3")
+const SPADES_TEXTURE = preload("uid://c55llxj3bfyi")
 
 @export_range(1, 13) var value: int
 @export var suit : Suit
@@ -36,6 +40,16 @@ func suit_as_color() -> Color:
 		return Color.AQUA
 
 func suit_as_icon() -> Texture:
+	match suit:
+		Suit.Hearts:
+			return HEARTS_TEXTURE
+		Suit.Clubs:
+			return CLUBS_TEXTURE
+		Suit.Diamonds:
+			return DIAMONDS_TEXTURE
+		Suit.Spades:
+			return SPADES_TEXTURE
+	
 	return preload("res://icon.svg")
 
 static func each_value() -> Array:

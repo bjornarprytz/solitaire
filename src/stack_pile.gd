@@ -1,5 +1,5 @@
 class_name StackPile
-extends VBoxContainer
+extends Droppable
 
 @onready var face_down: VBoxContainer = %FaceDown
 @onready var face_up: VBoxContainer = %FaceUp
@@ -44,23 +44,38 @@ func can_add(card: Card) -> bool:
 	var required_value:int = top_card.card_data.value-1 if top_card != null else 13
 	
 	# Require alternating colors
-	if (top_card.card_data.suit_as_color() == card.card_data.suit_as_color()):
+	if (required_value != 13 and top_card.card_data.suit_as_color() == card.card_data.suit_as_color()):
 		return false
 	
 	return card.card_data.value == required_value
 
-func add(top_card: Card, sub_stack: Array[Card]):
-	if !can_add(top_card):
-		push_warning("Trying to add %s, but it's impossible" % [top_card])
+func add(cards: Array[Card]):
+	if (cards.size() == 0 or !can_add(cards[0])):
+		push_warning("Trying to add card, but it's impossible")
 		return
-	# Assume the sub_stack is valid
-	
-	face_up.add_child(top_card)
-	
-	for card in sub_stack:
-		face_up.add_child(card)
+	# Assume the sub_stack is valid	
+	for card in cards:
+		if (card.get_parent() == null):
+			face_up.add_child(card)
+		else:
+			card.reparent(face_up)
+		card.position = Vector2.ZERO
 
 func get_top_card() -> Card:
 	if face_up.get_child_count() == 0:
 		return null
 	return face_up.get_child(-1)
+	
+func drop_cards(cards: Array[Card]) -> bool:
+	if (cards.size() == 0 or !can_add(cards[0])):
+		return false
+	
+	add(cards)
+	
+	return true
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		if (can_flip_card()):
+			flip_card()

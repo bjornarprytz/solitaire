@@ -6,6 +6,8 @@ var card_spawner = preload("res://card.tscn")
 @onready var open_pile: OpenPile = %OpenPile
 @onready var draw_pile: DrawPile = %DrawPile
 
+@onready var terminals: Array[TerminalPile] = [%HeartsTerminal, %ClubsTerminal, %DiamondsTerminal, %SpadesTerminal]
+
 func _ready() -> void:
 	var cards: Array[Card] = []
 	for suit in CardData.each_suit():
@@ -29,4 +31,10 @@ func _ready() -> void:
 	
 	draw_pile.add_cards(cards)
 	
-	
+	Events.terminal_pile_updated.connect(check_game_over)
+
+func check_game_over():
+	for terminal in terminals:
+		if (terminal.stack.get_child_count() != 13):
+			return
+	Events.game_over.emit(true)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://eaa0edq0jiho"]
+
+[ext_resource type="Script" uid="uid://dxuicy60ms2r0" path="res://grab_context.gd" id="1_kwrcq"]
+
+[node name="GrabContext" type="Node2D"]
+top_level = true
+script = ExtResource("1_kwrcq")
+
+[node name="Cards" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 128)
+mouse_filter = 2
+theme_override_constants/separation = -88

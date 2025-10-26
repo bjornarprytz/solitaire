@@ -29,6 +29,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -37,3 +38,5 @@ vertical_alignment = 1
 unique_name_in_owner = true
 visible = false
 position = Vector2(3, 3)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,8 +1,8 @@
 class_name TerminalPile
-extends MarginContainer
+extends Droppable
 
 @export var suit: CardData.Suit
-@onready var cards: Control = %Cards
+@onready var stack: Control = %Cards
 
 func try_add(card: Card):
 	var top_card = get_top_card()
@@ -14,8 +14,15 @@ func try_add(card: Card):
 func add(card: Card):
 	if !try_add(card):
 		push_warning("Trying to add %s, but it's impossible" % [card])
-
-	cards.add_child(card)
+		return
+	
+	if card.get_parent() != null:
+		card.reparent(stack)
+	else:
+		stack.add_child(card)
+	card.position = Vector2.ZERO
+	
+	Events.terminal_pile_updated.emit()
 
 func grab_card() -> Card:
 	var card_to_grab = get_top_card()
@@ -23,6 +30,15 @@ func grab_card() -> Card:
 	return card_to_grab
 
 func get_top_card() -> Card:
-	if cards.get_child_count() == 0:
+	if stack.get_child_count() == 0:
 		return null
-	return cards.get_child(-1)
+	return stack.get_child(-1)
+
+func drop_cards(cards: Array[Card]) -> bool:
+	if cards.size() != 1:
+		return false
+	
+	if try_add(cards[0]):
+		add(cards[0])
+	
+	return true

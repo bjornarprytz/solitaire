@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cblwct10ittyy"]
+[gd_scene load_steps=4 format=3 uid="uid://cblwct10ittyy"]
 
 [ext_resource type="Script" uid="uid://b6stt2t0vqr" path="res://terminal_pile.gd" id="1_k6s5h"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6s5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p4jt"]
+size = Vector2(105, 138.5)
 
 [node name="HeartsTerminal" type="MarginContainer"]
 theme_override_constants/margin_left = 3
@@ -22,3 +25,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(96, 128)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_k6s5h")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(50.5, 67.75)
+shape = SubResource("RectangleShape2D_6p4jt")
