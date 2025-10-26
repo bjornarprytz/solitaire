@@ -15,7 +15,7 @@ var is_face_down: bool = false
 func _ready() -> void:
 	value_1.text = card_data.value_as_string()
 	value_2.text = card_data.value_as_string()
-	modulate = card_data.suit_as_color()
+	front.modulate = card_data.suit_as_color()
 	
 	if is_face_down:
 		front.hide()

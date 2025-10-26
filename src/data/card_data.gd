@@ -12,6 +12,10 @@ enum Suit{
 @export_range(1, 13) var value: int
 @export var suit : Suit
 
+func _init(suit_: Suit, value_: int) -> void:
+	suit = suit_
+	value = value_
+
 func value_as_string() -> String:
 	match (value):
 		1:
@@ -33,3 +37,9 @@ func suit_as_color() -> Color:
 
 func suit_as_icon() -> Texture:
 	return preload("res://icon.svg")
+
+static func each_value() -> Array:
+	return range(1, 14)
+
+static func each_suit() -> Array[Suit]:
+	return [Suit.Hearts, Suit.Clubs, Suit.Diamonds, Suit.Spades]

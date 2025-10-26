@@ -3,11 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://x26utaa7p8la" path="res://assets/img/card-back-sprite-medium.png" id="1_k8hdt"]
 [ext_resource type="Script" uid="uid://btybroomsnd" path="res://draw_pile.gd" id="2_iq4tk"]
 
-[node name="TextureRect" type="TextureRect"]
-texture = ExtResource("1_k8hdt")
+[node name="DrawPile" type="MarginContainer"]
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
 script = ExtResource("2_iq4tk")
 
-[node name="Count" type="RichTextLabel" parent="."]
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_k8hdt")
+
+[node name="Count" type="RichTextLabel" parent="Texture"]
 unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
@@ -25,3 +32,8 @@ grow_vertical = 2
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HiddenCards" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(3, 3)

@@ -6,11 +6,13 @@
 custom_minimum_size = Vector2(96, 0)
 offset_right = 96.0
 offset_bottom = 1052.0
+size_flags_vertical = 3
 theme_override_constants/separation = -88
 script = ExtResource("1_u52gb")
 
 [node name="FaceDown" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -88
 

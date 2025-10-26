@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbka0t236o8i8"]
+
+[ext_resource type="Script" uid="uid://d27w03fbdt3f0" path="res://open_pile.gd" id="1_pqafe"]
+
+[node name="OpenPile" type="MarginContainer"]
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+script = ExtResource("1_pqafe")
+
+[node name="EmptyText" type="RichTextLabel" parent="."]
+layout_mode = 2
+text = "Empty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cards" type="Control" parent="."]
+custom_minimum_size = Vector2(96, 128)
+layout_mode = 2

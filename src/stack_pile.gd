@@ -9,6 +9,9 @@ func initialize(face_down_cards: Array[Card], face_up_card: Card):
 		card.is_face_down = true
 		face_down.add_child(card)
 	
+	if (face_down_cards.size() > 0):
+		face_down.show()
+	
 	face_up_card.is_face_down = false
 	face_up.add_child(face_up_card)
 
