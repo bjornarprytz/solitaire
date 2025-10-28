@@ -1,8 +1,7 @@
-@tool
 class_name CardData
 extends Resource
 
-enum Suit{
+enum Suit {
 	Hearts,
 	Clubs,
 	Diamonds,
@@ -14,7 +13,7 @@ const HEARTS_TEXTURE = preload("uid://cwbgtq6075gv3")
 const SPADES_TEXTURE = preload("uid://c55llxj3bfyi")
 
 @export_range(1, 13) var value: int
-@export var suit : Suit
+@export var suit: Suit
 
 func _init(suit_: Suit, value_: int) -> void:
 	suit = suit_
@@ -26,7 +25,7 @@ func value_as_string() -> String:
 			return "A"
 		11:
 			return "J"
-		12: 
+		12:
 			return "Q"
 		13:
 			return "K"
@@ -34,13 +33,19 @@ func value_as_string() -> String:
 			return str(value)
 
 func suit_as_color() -> Color:
-	if [Suit.Hearts, Suit.Diamonds].has(suit):
+	return suit_to_color(suit)
+
+func suit_as_icon() -> Texture:
+	return suit_to_icon(suit)
+
+static func suit_to_color(suit_: Suit) -> Color:
+	if [Suit.Hearts, Suit.Diamonds].has(suit_):
 		return Color.ORANGE_RED
 	else:
 		return Color.AQUA
 
-func suit_as_icon() -> Texture:
-	match suit:
+static func suit_to_icon(suit_: Suit) -> Texture:
+	match suit_:
 		Suit.Hearts:
 			return HEARTS_TEXTURE
 		Suit.Clubs:
@@ -51,6 +56,7 @@ func suit_as_icon() -> Texture:
 			return SPADES_TEXTURE
 	
 	return preload("res://icon.svg")
+	
 
 static func each_value() -> Array:
 	return range(1, 14)

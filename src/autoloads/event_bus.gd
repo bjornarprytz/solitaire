@@ -10,3 +10,5 @@ signal game_over(win: bool)
 
 signal draw_card(card: Card)
 signal draw_pile_empty(pile: DrawPile)
+
+signal try_move_to_terminal(card: Card)

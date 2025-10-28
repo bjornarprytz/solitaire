@@ -1,4 +1,3 @@
-@tool
 class_name Card
 extends CanvasItem
 
@@ -54,18 +53,23 @@ func _on_input_catcher_gui_input(event: InputEvent) -> void:
 		if is_face_down:
 			return
 		
-		var grab_context = grab_context_factory.instantiate() as GrabContext
-		get_tree().root.add_child(grab_context)
+		match (event.button_index):
+			MOUSE_BUTTON_LEFT:
+				var grab_context = grab_context_factory.instantiate() as GrabContext
+				get_tree().root.add_child(grab_context)
+				
+				var cards: Array[Card] = [self]
+				
+				var passed_self = false
+				for card in self.get_parent().get_children():
+					if card == self:
+						passed_self = true
+					elif card is Card and passed_self:
+						cards.push_back(card)
+				
+				grab_context.grab(cards)
+			MOUSE_BUTTON_RIGHT:
+				Events.try_move_to_terminal.emit(self)
 		
-		var cards: Array[Card] = [self]
-		
-		var passed_self = false
-		for card in self.get_parent().get_children():
-			if card == self:
-				passed_self = true
-			elif card is Card and passed_self:
-				cards.push_back(card)
-		
-		grab_context.grab(cards)
 		
 		

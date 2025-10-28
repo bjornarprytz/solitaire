@@ -3,6 +3,13 @@ extends Droppable
 
 @export var suit: CardData.Suit
 @onready var stack: Control = %Cards
+@onready var suit_icon: TextureRect = %Suit
+
+func _ready() -> void:
+	suit_icon.texture =  CardData.suit_to_icon(suit)
+	suit_icon.modulate = CardData.suit_to_color(suit)
+	
+	Events.try_move_to_terminal.connect(add)
 
 func try_add(card: Card):
 	var top_card = get_top_card()
@@ -13,7 +20,6 @@ func try_add(card: Card):
 
 func add(card: Card):
 	if !try_add(card):
-		push_warning("Trying to add %s, but it's impossible" % [card])
 		return
 	
 	if card.get_parent() != null:

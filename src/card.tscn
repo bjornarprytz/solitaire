@@ -11,6 +11,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(48, 64)
+mouse_filter = 1
 script = ExtResource("2_rjlel")
 
 [node name="Front" type="TextureRect" parent="."]
@@ -32,12 +33,14 @@ theme_override_constants/margin_bottom = 7
 
 [node name="Control" type="Control" parent="Front/MarginContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Value1" type="RichTextLabel" parent="Front/MarginContainer/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 offset_right = 5.0
 offset_bottom = 23.0
+mouse_filter = 1
 text = "7"
 fit_content = true
 autowrap_mode = 0
@@ -54,6 +57,7 @@ offset_left = -10.0
 offset_top = -9.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 1
 text = "7"
 fit_content = true
 autowrap_mode = 0
@@ -66,12 +70,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 11.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
+stretch_mode = 3
 
 [node name="Back" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -86,5 +91,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [connection signal="gui_input" from="InputCatcher" to="." method="_on_input_catcher_gui_input"]

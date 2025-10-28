@@ -5,6 +5,13 @@ extends Node2D
 
 var _previous_parent: CanvasItem
 
+func _ready() -> void:
+	var t = create_tween()
+	t.tween_method(tween_separation, grabbed_cards.get("theme_override_constants/separation"), -104, .069)
+
+func tween_separation(separation: int):
+	grabbed_cards.set("theme_override_constants/separation", separation)
+
 func _physics_process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 
