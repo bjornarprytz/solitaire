@@ -55,11 +55,9 @@ func add(cards: Array[Card]):
 		return
 	# Assume the sub_stack is valid	
 	for card in cards:
-		if (card.get_parent() == null):
-			face_up.add_child(card)
-		else:
-			card.reparent(face_up)
-		card.position = Vector2.ZERO
+		var dest = CardDestination.new()
+		face_up.add_child(dest)
+		await dest.add_card(card)
 
 func get_top_card() -> Card:
 	if face_up.get_child_count() == 0:

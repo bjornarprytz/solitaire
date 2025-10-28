@@ -7,8 +7,9 @@ func _ready() -> void:
 	Events.draw_pile_empty.connect(on_draw_pile_empty)
 	
 func on_draw(card: Card):
-	card.reparent(card_parent)
-	card.position = Vector2.ZERO
+	var dest = CardDestination.new()
+	card_parent.add_child(dest)
+	await dest.add_card(card)
 	
 func on_draw_pile_empty(draw_pile: DrawPile):
 	var cards: Array[Card] = []

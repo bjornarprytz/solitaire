@@ -20,6 +20,7 @@ func _input(event: InputEvent) -> void:
 		try_drop()
 
 func try_drop():
+	process_mode = Node.PROCESS_MODE_DISABLED
 	var space = get_world_2d().direct_space_state
 	var mouse_pos = get_global_mouse_position()
 	var args = PhysicsPointQueryParameters2D.new()
@@ -48,7 +49,8 @@ func cancel():
 	assert(_previous_parent != null, "Nowhere to return the cards to :(")
 	
 	for card in grabbed_cards.get_children():
-		card.reparent(_previous_parent)
-		card.position = Vector2.ZERO
+		var dest = CardDestination.new()
+		_previous_parent.add_child(dest)
+		await dest.add_card(card)
 	
 	queue_free()

@@ -22,11 +22,9 @@ func add(card: Card):
 	if !try_add(card):
 		return
 	
-	if card.get_parent() != null:
-		card.reparent(stack)
-	else:
-		stack.add_child(card)
-	card.position = Vector2.ZERO
+	var dest = CardDestination.new()
+	stack.add_child(dest)
+	await dest.add_card(card)
 	
 	Events.terminal_pile_updated.emit()
 

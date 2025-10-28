@@ -7,10 +7,8 @@ Stipulation: Cards
 ## TODO
 
 - QOL
-  - Right click to move card to terminal
   - Better feel during grab context
 - Tween transitions
-  - Cards moving
   - Flipping cards
   - Zones indicating a valid drop
   - End game "animation"

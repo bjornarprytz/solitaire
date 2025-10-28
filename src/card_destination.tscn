@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca2lfa5lprow8"]
+
+[ext_resource type="Script" uid="uid://xy78pdwo3jc1" path="res://card_destination.gd" id="1_pntg5"]
+
+[node name="CardDestination" type="Control"]
+custom_minimum_size = Vector2(96, 128)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pntg5")
