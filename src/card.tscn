@@ -94,3 +94,4 @@ grow_vertical = 2
 mouse_filter = 1
 
 [connection signal="gui_input" from="InputCatcher" to="." method="_on_input_catcher_gui_input"]
+[connection signal="mouse_entered" from="InputCatcher" to="." method="_on_input_catcher_mouse_entered"]

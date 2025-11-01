@@ -9,7 +9,6 @@ Stipulation: Cards
 - QOL
   - Better feel during grab context
 - Tween transitions
-  - Flipping cards
   - Zones indicating a valid drop
   - End game "animation"
 

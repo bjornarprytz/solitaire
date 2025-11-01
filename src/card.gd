@@ -13,6 +13,7 @@ var grab_context_factory = preload("res://grab_context.tscn")
 @onready var back: TextureRect = %Back
 
 var is_face_down: bool = false
+var is_shaking: bool = false
 
 func _ready() -> void:
 	value_1.text = card_data.value_as_string()
@@ -70,6 +71,15 @@ func _on_input_catcher_gui_input(event: InputEvent) -> void:
 				grab_context.grab(cards)
 			MOUSE_BUTTON_RIGHT:
 				Events.try_move_to_terminal.emit(self)
-		
-		
-		
+
+func _on_input_catcher_mouse_entered() -> void:
+	if (is_shaking):
+		return
+	is_shaking = true
+	var tween = create_tween()
+	tween.tween_property(self, "rotation_degrees", 3.0, .069).as_relative()
+	tween.tween_property(self, "rotation_degrees", -6.0, .069).as_relative()
+	tween.tween_property(self, "rotation_degrees", 6.0, .069).as_relative()
+	tween.tween_property(self, "rotation_degrees", -3.0, .069).as_relative()
+	await tween.finished
+	is_shaking = false
