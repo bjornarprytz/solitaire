@@ -48,6 +48,11 @@ func flip_over():
 	
 	await tween.finished
 
+func highlight():
+	modulate = Color.CHARTREUSE
+
+func unhighlight():
+	modulate = Color.WHITE
 
 func _on_input_catcher_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
@@ -72,7 +77,7 @@ func _on_input_catcher_gui_input(event: InputEvent) -> void:
 			MOUSE_BUTTON_RIGHT:
 				Events.try_move_to_terminal.emit(self)
 
-func _on_input_catcher_mouse_entered() -> void:
+func shake():
 	if (is_shaking):
 		return
 	is_shaking = true
@@ -83,3 +88,6 @@ func _on_input_catcher_mouse_entered() -> void:
 	tween.tween_property(self, "rotation_degrees", -1.0, .069).as_relative()
 	await tween.finished
 	is_shaking = false
+
+func _on_input_catcher_mouse_entered() -> void:
+	shake()

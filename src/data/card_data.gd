@@ -15,10 +15,6 @@ const SPADES_TEXTURE = preload("uid://c55llxj3bfyi")
 @export_range(1, 13) var value: int
 @export var suit: Suit
 
-func _init(suit_: Suit, value_: int) -> void:
-	suit = suit_
-	value = value_
-
 func value_as_string() -> String:
 	match (value):
 		1:

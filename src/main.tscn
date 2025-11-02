@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgrejd4v5ywd3"]
+[gd_scene load_steps=10 format=3 uid="uid://cgrejd4v5ywd3"]
 
 [ext_resource type="Script" uid="uid://ceckrfjftshqs" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://y2ema5vflrsn" path="res://draw_pile.tscn" id="2_1bvp3"]
@@ -19,6 +19,8 @@ shader_parameter/wave_amplitude = 0.010000000475
 shader_parameter/wave_frequency = 3.000000095
 shader_parameter/background_color = Color(1, 1, 1, 1)
 shader_parameter/line_color = Color(0, 0, 0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_272bh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ig7tw")
@@ -154,3 +156,26 @@ layout_mode = 2
 [node name="StackPile7" parent="Control/MarginContainer/Control/VBoxContainer/Stacks/HB" instance=ExtResource("6_7mycd")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Floor"]
+position = Vector2(0, 721)
+shape = SubResource("WorldBoundaryShape2D_272bh")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Shape" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(0, 721)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_272bh")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Shape" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(1280, 720)
+rotation = 4.712389
+shape = SubResource("WorldBoundaryShape2D_272bh")

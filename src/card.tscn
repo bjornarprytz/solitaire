@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc5e58fyby0i2"]
+[gd_scene load_steps=6 format=3 uid="uid://bc5e58fyby0i2"]
 
 [ext_resource type="Texture2D" uid="uid://c4bmop533isw8" path="res://assets/img/card-front-medium.png" id="1_kikvd"]
+[ext_resource type="Script" uid="uid://brbusmvass5ub" path="res://data/card_data.gd" id="2_e484p"]
 [ext_resource type="Script" uid="uid://cp04x0716l2vf" path="res://card.gd" id="2_rjlel"]
 [ext_resource type="Texture2D" uid="uid://x26utaa7p8la" path="res://assets/img/card-back-sprite-medium.png" id="3_q5obu"]
+
+[sub_resource type="Resource" id="Resource_fpac0"]
+script = ExtResource("2_e484p")
+metadata/_custom_type_script = "uid://brbusmvass5ub"
 
 [node name="Card" type="Control"]
 custom_minimum_size = Vector2(96, 128)
@@ -13,6 +18,7 @@ offset_bottom = 40.0
 pivot_offset = Vector2(48, 64)
 mouse_filter = 1
 script = ExtResource("2_rjlel")
+card_data = SubResource("Resource_fpac0")
 
 [node name="Front" type="TextureRect" parent="."]
 unique_name_in_owner = true

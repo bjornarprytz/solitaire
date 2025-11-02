@@ -36,6 +36,8 @@ func try_drop():
 			result[0].collider.owner.drop_cards(cards)
 	cancel()
 
+
+
 func grab(cards: Array[Card]) -> void:
 	if (cards.size() == 0):
 		cancel()

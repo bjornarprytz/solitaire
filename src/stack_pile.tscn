@@ -8,7 +8,7 @@ size = Vector2(97, 719)
 [node name="StackPile" type="VBoxContainer"]
 custom_minimum_size = Vector2(96, 0)
 offset_right = 96.0
-offset_bottom = 1052.0
+offset_bottom = 718.0
 size_flags_vertical = 3
 theme_override_constants/separation = -110
 script = ExtResource("1_u52gb")
@@ -25,7 +25,6 @@ layout_mode = 2
 theme_override_constants/separation = -88
 
 [node name="Area2D" type="Area2D" parent="."]
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(47.5, 359.5)

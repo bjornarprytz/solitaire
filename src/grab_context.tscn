@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://eaa0edq0jiho"]
+[gd_scene load_steps=3 format=3 uid="uid://eaa0edq0jiho"]
 
 [ext_resource type="Script" uid="uid://dxuicy60ms2r0" path="res://grab_context.gd" id="1_kwrcq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwrcq"]
+radius = 4.0
 
 [node name="GrabContext" type="Node2D"]
 top_level = true
@@ -15,3 +18,9 @@ offset_right = 49.0
 offset_bottom = 109.0
 mouse_filter = 2
 theme_override_constants/separation = -88
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="Shape" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kwrcq")
