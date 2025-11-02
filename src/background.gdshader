@@ -6,6 +6,8 @@ uniform float speed : hint_range(0.0, 1.0) = 0.05;         // scroll speed
 uniform float line_opacity : hint_range(0.0, 1.0) = 0.1;   // how visible the lines are
 uniform float line_thickness : hint_range(0.001, 0.4) = 0.05; // width of the lines
 uniform float angle : hint_range(0.0, 6.28318) = 0.785398; // rotation angle in radians (default: 45 degrees)
+uniform float wave_amplitude : hint_range(0.0, 0.2) = 0.02; // how wavy the lines are
+uniform float wave_frequency : hint_range(1.0, 20.0) = 5.0; // wave frequency
 uniform vec4 background_color: source_color = vec4(0.2, 0.4, 0.2, 1.0); // fallback background color
 uniform vec3 line_color : source_color = vec3(0.0, 0.0, 0.0); // color of the lines
 
@@ -18,6 +20,9 @@ void fragment() {
 
     // Animate motion
     uv.y += TIME * speed;
+
+    // Add wave distortion to make lines wavy
+    uv.y += sin(uv.x * wave_frequency + TIME) * wave_amplitude;
 
     // Create repeating stripes
     float stripe = fract(uv.y * line_density);

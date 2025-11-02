@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbka0t236o8i8"]
+[gd_scene load_steps=6 format=3 uid="uid://bbka0t236o8i8"]
 
 [ext_resource type="Script" uid="uid://d27w03fbdt3f0" path="res://open_pile.gd" id="1_pqafe"]
+[ext_resource type="Texture2D" uid="uid://bybk6t6lgpl52" path="res://assets/img/clubs-medium.png" id="2_8d8eq"]
+[ext_resource type="Texture2D" uid="uid://cuy0ynuvhy4uu" path="res://assets/img/diamonds-medium.png" id="3_dn363"]
+[ext_resource type="Texture2D" uid="uid://c55llxj3bfyi" path="res://assets/img/spades-medium.png" id="4_qrbp5"]
+[ext_resource type="Texture2D" uid="uid://cwbgtq6075gv3" path="res://assets/img/hearts-medium.png" id="5_tq8f2"]
 
 [node name="OpenPile" type="MarginContainer"]
 theme_override_constants/margin_left = 3
@@ -9,11 +13,40 @@ theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 script = ExtResource("1_pqafe")
 
-[node name="EmptyText" type="RichTextLabel" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
-text = "Empty"
-horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Spades" type="TextureRect" parent="CenterContainer/GridContainer"]
+modulate = Color(0, 1, 1, 1)
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("4_qrbp5")
+stretch_mode = 3
+
+[node name="Diamonds" type="TextureRect" parent="CenterContainer/GridContainer"]
+modulate = Color(1, 0.27058825, 0, 1)
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_dn363")
+stretch_mode = 3
+
+[node name="Hearts" type="TextureRect" parent="CenterContainer/GridContainer"]
+modulate = Color(1, 0.27058825, 0, 1)
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("5_tq8f2")
+stretch_mode = 3
+
+[node name="Clubs" type="TextureRect" parent="CenterContainer/GridContainer"]
+modulate = Color(0, 1, 1, 1)
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_8d8eq")
+stretch_mode = 3
 
 [node name="Cards" type="Control" parent="."]
 unique_name_in_owner = true

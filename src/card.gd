@@ -77,9 +77,9 @@ func _on_input_catcher_mouse_entered() -> void:
 		return
 	is_shaking = true
 	var tween = create_tween()
+	tween.tween_property(self, "rotation_degrees", 2.0, .069).as_relative()
+	tween.tween_property(self, "rotation_degrees", -4.0, .069).as_relative()
 	tween.tween_property(self, "rotation_degrees", 3.0, .069).as_relative()
-	tween.tween_property(self, "rotation_degrees", -6.0, .069).as_relative()
-	tween.tween_property(self, "rotation_degrees", 6.0, .069).as_relative()
-	tween.tween_property(self, "rotation_degrees", -3.0, .069).as_relative()
+	tween.tween_property(self, "rotation_degrees", -1.0, .069).as_relative()
 	await tween.finished
 	is_shaking = false
